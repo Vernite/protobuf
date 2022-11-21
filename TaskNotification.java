@@ -39,6 +39,12 @@ public final class TaskNotification {
      */
     com.google.protobuf.ByteString
         getCreatedAtBytes();
+
+    /**
+     * <code>int32 taskId = 3;</code>
+     * @return The taskId.
+     */
+    int getTaskId();
   }
   /**
    * Protobuf type {@code NewTaskNotification}
@@ -158,6 +164,17 @@ public final class TaskNotification {
       }
     }
 
+    public static final int TASKID_FIELD_NUMBER = 3;
+    private int taskId_;
+    /**
+     * <code>int32 taskId = 3;</code>
+     * @return The taskId.
+     */
+    @java.lang.Override
+    public int getTaskId() {
+      return taskId_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -178,6 +195,9 @@ public final class TaskNotification {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(createdAt_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, createdAt_);
       }
+      if (taskId_ != 0) {
+        output.writeInt32(3, taskId_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -192,6 +212,10 @@ public final class TaskNotification {
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(createdAt_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, createdAt_);
+      }
+      if (taskId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, taskId_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -212,6 +236,8 @@ public final class TaskNotification {
           .equals(other.getName())) return false;
       if (!getCreatedAt()
           .equals(other.getCreatedAt())) return false;
+      if (getTaskId()
+          != other.getTaskId()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -227,6 +253,8 @@ public final class TaskNotification {
       hash = (53 * hash) + getName().hashCode();
       hash = (37 * hash) + CREATEDAT_FIELD_NUMBER;
       hash = (53 * hash) + getCreatedAt().hashCode();
+      hash = (37 * hash) + TASKID_FIELD_NUMBER;
+      hash = (53 * hash) + getTaskId();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -359,6 +387,8 @@ public final class TaskNotification {
 
         createdAt_ = "";
 
+        taskId_ = 0;
+
         return this;
       }
 
@@ -387,6 +417,7 @@ public final class TaskNotification {
         TaskNotification.NewTaskNotification result = new TaskNotification.NewTaskNotification(this);
         result.name_ = name_;
         result.createdAt_ = createdAt_;
+        result.taskId_ = taskId_;
         onBuilt();
         return result;
       }
@@ -443,6 +474,9 @@ public final class TaskNotification {
           createdAt_ = other.createdAt_;
           onChanged();
         }
+        if (other.getTaskId() != 0) {
+          setTaskId(other.getTaskId());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -479,6 +513,11 @@ public final class TaskNotification {
 
                 break;
               } // case 18
+              case 24: {
+                taskId_ = input.readInt32();
+
+                break;
+              } // case 24
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -646,6 +685,37 @@ public final class TaskNotification {
         onChanged();
         return this;
       }
+
+      private int taskId_ ;
+      /**
+       * <code>int32 taskId = 3;</code>
+       * @return The taskId.
+       */
+      @java.lang.Override
+      public int getTaskId() {
+        return taskId_;
+      }
+      /**
+       * <code>int32 taskId = 3;</code>
+       * @param value The taskId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTaskId(int value) {
+        
+        taskId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 taskId = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTaskId() {
+        
+        taskId_ = 0;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -725,8 +795,8 @@ public final class TaskNotification {
   static {
     java.lang.String[] descriptorData = {
       "\n%notifications/task.notification.proto\"" +
-      "6\n\023NewTaskNotification\022\014\n\004name\030\001 \001(\t\022\021\n\t" +
-      "createdAt\030\002 \001(\tb\006proto3"
+      "F\n\023NewTaskNotification\022\014\n\004name\030\001 \001(\t\022\021\n\t" +
+      "createdAt\030\002 \001(\t\022\016\n\006taskId\030\003 \001(\005b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -737,7 +807,7 @@ public final class TaskNotification {
     internal_static_NewTaskNotification_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_NewTaskNotification_descriptor,
-        new java.lang.String[] { "Name", "CreatedAt", });
+        new java.lang.String[] { "Name", "CreatedAt", "TaskId", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
