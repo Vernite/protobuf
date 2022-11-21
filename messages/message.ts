@@ -67,7 +67,7 @@ export class NewTaskNotification extends pb_1.Message {
     serializeBinary(): Uint8Array {
         return this.serialize();
     }
-    static deserializeBinary(bytes: Uint8Array): NewTaskNotification {
+    static override deserializeBinary(bytes: Uint8Array): NewTaskNotification {
         return NewTaskNotification.deserialize(bytes);
     }
 }
