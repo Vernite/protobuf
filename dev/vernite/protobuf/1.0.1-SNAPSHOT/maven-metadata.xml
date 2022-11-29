@@ -2,23 +2,23 @@
 <metadata modelVersion="1.1.0">
   <groupId>dev.vernite</groupId>
   <artifactId>protobuf</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0.1-SNAPSHOT</version>
   <versioning>
     <snapshot>
-      <timestamp>20221129.183248</timestamp>
+      <timestamp>20221129.183759</timestamp>
       <buildNumber>1</buildNumber>
     </snapshot>
-    <lastUpdated>20221129183248</lastUpdated>
+    <lastUpdated>20221129183759</lastUpdated>
     <snapshotVersions>
       <snapshotVersion>
         <extension>jar</extension>
-        <value>1.0-20221129.183248-1</value>
-        <updated>20221129183248</updated>
+        <value>1.0.1-20221129.183759-1</value>
+        <updated>20221129183759</updated>
       </snapshotVersion>
       <snapshotVersion>
         <extension>pom</extension>
-        <value>1.0-20221129.183248-1</value>
-        <updated>20221129183248</updated>
+        <value>1.0.1-20221129.183759-1</value>
+        <updated>20221129183759</updated>
       </snapshotVersion>
     </snapshotVersions>
   </versioning>
