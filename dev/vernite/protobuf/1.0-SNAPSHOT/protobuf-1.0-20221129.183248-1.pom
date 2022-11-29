@@ -15,7 +15,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
-    <github.global.server>github</github.global.server>
+    <github.global.oauth2Token>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</github.global.oauth2Token>
   </properties>
 
   <dependencies>
@@ -30,7 +30,7 @@
     <repository>
       <id>internal.repo</id>
       <name>Temporary Staging Repository</name>
-      <url>file://${project.build.directory}/mvn-repo</url> 
+      <url>file://${project.build.directory}/mvn-repo</url>
     </repository>
   </distributionManagement>
 
@@ -47,7 +47,7 @@
       <plugin>
         <groupId>com.github.github</groupId>
         <artifactId>site-maven-plugin</artifactId>
-        <version>0.12</version>
+        <version>0.11</version>
         <configuration>
           <message>Maven artifacts for ${project.version}</message>
           <noJekyll>true</noJekyll>
