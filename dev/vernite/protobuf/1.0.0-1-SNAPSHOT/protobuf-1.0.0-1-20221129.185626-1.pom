@@ -6,7 +6,7 @@
 
   <groupId>dev.vernite</groupId>
   <artifactId>protobuf</artifactId>
-  <version>1.0.1-SNAPSHOT</version>
+  <version>1.0.0-1-SNAPSHOT</version>
   <name>protobuf</name>
   <url>http://vernite.dev</url>
 
@@ -15,7 +15,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
-    <github.global.oauth2Token>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</github.global.oauth2Token>
+    <github.global.server>github</github.global.server>
   </properties>
 
   <dependencies>
@@ -47,7 +47,7 @@
       <plugin>
         <groupId>com.github.github</groupId>
         <artifactId>site-maven-plugin</artifactId>
-        <version>0.11</version>
+        <version>0.12</version>
         <configuration>
           <message>Maven artifacts for ${project.version}</message>
           <noJekyll>true</noJekyll>
