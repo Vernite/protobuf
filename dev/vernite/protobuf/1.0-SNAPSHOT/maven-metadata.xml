@@ -3,21 +3,21 @@
   <groupId>dev.vernite</groupId>
   <artifactId>protobuf</artifactId>
   <versioning>
-    <lastUpdated>20221130023647</lastUpdated>
+    <lastUpdated>20221130023956</lastUpdated>
     <snapshot>
-      <timestamp>20221130.023647</timestamp>
-      <buildNumber>1</buildNumber>
+      <timestamp>20221130.023956</timestamp>
+      <buildNumber>2</buildNumber>
     </snapshot>
     <snapshotVersions>
       <snapshotVersion>
         <extension>jar</extension>
-        <value>1.0-20221130.023647-1</value>
-        <updated>20221130023647</updated>
+        <value>1.0-20221130.023956-2</value>
+        <updated>20221130023956</updated>
       </snapshotVersion>
       <snapshotVersion>
         <extension>pom</extension>
-        <value>1.0-20221130.023647-1</value>
-        <updated>20221130023647</updated>
+        <value>1.0-20221130.023956-2</value>
+        <updated>20221130023956</updated>
       </snapshotVersion>
     </snapshotVersions>
   </versioning>
