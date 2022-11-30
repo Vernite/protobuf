@@ -3,171 +3,178 @@
  * compiler version: 3.6.1
  * source: vernite.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
+import * as dependency_1 from "./google/protobuf/any";
 import * as pb_1 from "google-protobuf";
-export declare namespace tutorial {
-    enum Kind {
-        UPDATED = 0,
-        DELETED = 1
-    }
-    class Person extends pb_1.Message {
+export declare namespace vernite {
+    class CommunicatorModel extends pb_1.Message {
         #private;
-        constructor(data?: any[] | {
-            name?: string;
-            id?: number;
-            email?: string;
-            phones?: Person.PhoneNumber[];
-        });
-        get name(): string;
-        set name(value: string);
-        get id(): number;
-        set id(value: number);
-        get email(): string;
-        set email(value: string);
-        get phones(): Person.PhoneNumber[];
-        set phones(value: Person.PhoneNumber[]);
-        static fromObject(data: {
-            name?: string;
-            id?: number;
-            email?: string;
-            phones?: ReturnType<typeof Person.PhoneNumber.prototype.toObject>[];
-        }): Person;
-        toObject(): {
-            name?: string;
-            id?: number;
-            email?: string;
-            phones?: ReturnType<typeof Person.PhoneNumber.prototype.toObject>[];
-        };
+        constructor(data?: any[] | {});
+        static fromObject(data: {}): CommunicatorModel;
+        toObject(): {};
         serialize(): Uint8Array;
         serialize(w: pb_1.BinaryWriter): void;
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): Person;
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): CommunicatorModel;
         serializeBinary(): Uint8Array;
-        static deserializeBinary(bytes: Uint8Array): Person;
+        static deserializeBinary(bytes: Uint8Array): CommunicatorModel;
     }
-    namespace Person {
-        enum PhoneType {
-            MOBILE = 0,
-            HOME = 1,
-            WORK = 2
-        }
-        class PhoneNumber extends pb_1.Message {
+    namespace CommunicatorModel {
+        class Channel extends pb_1.Message {
             #private;
             constructor(data?: any[] | {
-                number?: string;
-                type?: Person.PhoneType;
+                id?: string;
+                name?: string;
+                user?: string;
+                channel?: boolean;
+                team?: string;
+                provider?: string;
             });
-            get number(): string;
-            set number(value: string);
-            get type(): Person.PhoneType;
-            set type(value: Person.PhoneType);
+            get id(): string;
+            set id(value: string);
+            get name(): string;
+            set name(value: string);
+            get user(): string;
+            set user(value: string);
+            get channel(): boolean;
+            set channel(value: boolean);
+            get team(): string;
+            set team(value: string);
+            get provider(): string;
+            set provider(value: string);
             static fromObject(data: {
-                number?: string;
-                type?: Person.PhoneType;
-            }): PhoneNumber;
+                id?: string;
+                name?: string;
+                user?: string;
+                channel?: boolean;
+                team?: string;
+                provider?: string;
+            }): Channel;
             toObject(): {
-                number?: string;
-                type?: Person.PhoneType;
+                id?: string;
+                name?: string;
+                user?: string;
+                channel?: boolean;
+                team?: string;
+                provider?: string;
             };
             serialize(): Uint8Array;
             serialize(w: pb_1.BinaryWriter): void;
-            static deserialize(bytes: Uint8Array | pb_1.BinaryReader): PhoneNumber;
+            static deserialize(bytes: Uint8Array | pb_1.BinaryReader): Channel;
             serializeBinary(): Uint8Array;
-            static deserializeBinary(bytes: Uint8Array): PhoneNumber;
+            static deserializeBinary(bytes: Uint8Array): Channel;
+        }
+        class ChatUser extends pb_1.Message {
+            #private;
+            constructor(data?: any[] | {
+                id?: string;
+                team?: string;
+                name?: string;
+                displayName?: string;
+                bot?: boolean;
+                avatar?: string;
+                provider?: string;
+            });
+            get id(): string;
+            set id(value: string);
+            get team(): string;
+            set team(value: string);
+            get name(): string;
+            set name(value: string);
+            get displayName(): string;
+            set displayName(value: string);
+            get bot(): boolean;
+            set bot(value: boolean);
+            get avatar(): string;
+            set avatar(value: string);
+            get provider(): string;
+            set provider(value: string);
+            static fromObject(data: {
+                id?: string;
+                team?: string;
+                name?: string;
+                displayName?: string;
+                bot?: boolean;
+                avatar?: string;
+                provider?: string;
+            }): ChatUser;
+            toObject(): {
+                id?: string;
+                team?: string;
+                name?: string;
+                displayName?: string;
+                bot?: boolean;
+                avatar?: string;
+                provider?: string;
+            };
+            serialize(): Uint8Array;
+            serialize(w: pb_1.BinaryWriter): void;
+            static deserialize(bytes: Uint8Array | pb_1.BinaryReader): ChatUser;
+            serializeBinary(): Uint8Array;
+            static deserializeBinary(bytes: Uint8Array): ChatUser;
+        }
+        class Message extends pb_1.Message {
+            #private;
+            constructor(data?: any[] | {
+                id?: string;
+                user?: string;
+                channel?: string;
+                content?: string;
+                timestamp?: string;
+                provider?: string;
+            });
+            get id(): string;
+            set id(value: string);
+            get user(): string;
+            set user(value: string);
+            get channel(): string;
+            set channel(value: string);
+            get content(): string;
+            set content(value: string);
+            get timestamp(): string;
+            set timestamp(value: string);
+            get provider(): string;
+            set provider(value: string);
+            static fromObject(data: {
+                id?: string;
+                user?: string;
+                channel?: string;
+                content?: string;
+                timestamp?: string;
+                provider?: string;
+            }): Message;
+            toObject(): {
+                id?: string;
+                user?: string;
+                channel?: string;
+                content?: string;
+                timestamp?: string;
+                provider?: string;
+            };
+            serialize(): Uint8Array;
+            serialize(w: pb_1.BinaryWriter): void;
+            static deserialize(bytes: Uint8Array | pb_1.BinaryReader): Message;
+            serializeBinary(): Uint8Array;
+            static deserializeBinary(bytes: Uint8Array): Message;
         }
     }
-    class AddressBook extends pb_1.Message {
+    class Packet extends pb_1.Message {
         #private;
         constructor(data?: any[] | {
-            people?: Person[];
+            payload?: dependency_1.google.protobuf.Any;
         });
-        get people(): Person[];
-        set people(value: Person[]);
+        get payload(): dependency_1.google.protobuf.Any;
+        set payload(value: dependency_1.google.protobuf.Any);
+        get has_payload(): boolean;
         static fromObject(data: {
-            people?: ReturnType<typeof Person.prototype.toObject>[];
-        }): AddressBook;
+            payload?: ReturnType<typeof dependency_1.google.protobuf.Any.prototype.toObject>;
+        }): Packet;
         toObject(): {
-            people?: ReturnType<typeof Person.prototype.toObject>[];
+            payload?: ReturnType<typeof dependency_1.google.protobuf.Any.prototype.toObject>;
         };
         serialize(): Uint8Array;
         serialize(w: pb_1.BinaryWriter): void;
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): AddressBook;
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): Packet;
         serializeBinary(): Uint8Array;
-        static deserializeBinary(bytes: Uint8Array): AddressBook;
-    }
-    class Author extends pb_1.Message {
-        #private;
-        constructor(data?: any[] | {
-            name?: string;
-            role?: string;
-        });
-        get name(): string;
-        set name(value: string);
-        get role(): string;
-        set role(value: string);
-        static fromObject(data: {
-            name?: string;
-            role?: string;
-        }): Author;
-        toObject(): {
-            name?: string;
-            role?: string;
-        };
-        serialize(): Uint8Array;
-        serialize(w: pb_1.BinaryWriter): void;
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): Author;
-        serializeBinary(): Uint8Array;
-        static deserializeBinary(bytes: Uint8Array): Author;
-    }
-    class Change extends pb_1.Message {
-        #private;
-        constructor(data?: any[] | ({
-            kind?: Kind;
-            patch?: string;
-            tags?: string[];
-            author?: Author;
-        } & (({
-            name?: string;
-            id?: never;
-        } | {
-            name?: never;
-            id?: string;
-        }))));
-        get kind(): Kind;
-        set kind(value: Kind);
-        get patch(): string;
-        set patch(value: string);
-        get tags(): string[];
-        set tags(value: string[]);
-        get name(): string;
-        set name(value: string);
-        get has_name(): boolean;
-        get id(): string;
-        set id(value: string);
-        get has_id(): boolean;
-        get author(): Author;
-        set author(value: Author);
-        get has_author(): boolean;
-        get name_or_id(): "name" | "id" | "none";
-        static fromObject(data: {
-            kind?: Kind;
-            patch?: string;
-            tags?: string[];
-            name?: string;
-            id?: string;
-            author?: ReturnType<typeof Author.prototype.toObject>;
-        }): Change;
-        toObject(): {
-            kind?: Kind;
-            patch?: string;
-            tags?: string[];
-            name?: string;
-            id?: string;
-            author?: ReturnType<typeof Author.prototype.toObject>;
-        };
-        serialize(): Uint8Array;
-        serialize(w: pb_1.BinaryWriter): void;
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): Change;
-        serializeBinary(): Uint8Array;
-        static deserializeBinary(bytes: Uint8Array): Change;
+        static deserializeBinary(bytes: Uint8Array): Packet;
     }
 }
 //# sourceMappingURL=vernite.d.ts.map

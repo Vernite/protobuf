@@ -8,122 +8,37 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
  * compiler version: 3.6.1
  * source: vernite.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
+import * as dependency_1 from "./google/protobuf/any";
 import * as pb_1 from "google-protobuf";
-export var tutorial;
-(function (tutorial) {
-    var _Person_one_of_decls, _AddressBook_one_of_decls, _Author_one_of_decls, _Change_one_of_decls;
-    let Kind;
-    (function (Kind) {
-        Kind[Kind["UPDATED"] = 0] = "UPDATED";
-        Kind[Kind["DELETED"] = 1] = "DELETED";
-    })(Kind = tutorial.Kind || (tutorial.Kind = {}));
-    class Person extends pb_1.Message {
+export var vernite;
+(function (vernite) {
+    var _CommunicatorModel_one_of_decls, _Packet_one_of_decls;
+    class CommunicatorModel extends pb_1.Message {
         constructor(data) {
             super();
-            _Person_one_of_decls.set(this, []);
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], __classPrivateFieldGet(this, _Person_one_of_decls, "f"));
-            if (!Array.isArray(data) && typeof data == "object") {
-                if ("name" in data && data.name != undefined) {
-                    this.name = data.name;
-                }
-                if ("id" in data && data.id != undefined) {
-                    this.id = data.id;
-                }
-                if ("email" in data && data.email != undefined) {
-                    this.email = data.email;
-                }
-                if ("phones" in data && data.phones != undefined) {
-                    this.phones = data.phones;
-                }
-            }
-        }
-        get name() {
-            return pb_1.Message.getFieldWithDefault(this, 1, "");
-        }
-        set name(value) {
-            pb_1.Message.setField(this, 1, value);
-        }
-        get id() {
-            return pb_1.Message.getFieldWithDefault(this, 2, 0);
-        }
-        set id(value) {
-            pb_1.Message.setField(this, 2, value);
-        }
-        get email() {
-            return pb_1.Message.getFieldWithDefault(this, 3, "");
-        }
-        set email(value) {
-            pb_1.Message.setField(this, 3, value);
-        }
-        get phones() {
-            return pb_1.Message.getRepeatedWrapperField(this, Person.PhoneNumber, 4);
-        }
-        set phones(value) {
-            pb_1.Message.setRepeatedWrapperField(this, 4, value);
+            _CommunicatorModel_one_of_decls.set(this, []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], __classPrivateFieldGet(this, _CommunicatorModel_one_of_decls, "f"));
+            if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data) {
-            const message = new Person({});
-            if (data.name != null) {
-                message.name = data.name;
-            }
-            if (data.id != null) {
-                message.id = data.id;
-            }
-            if (data.email != null) {
-                message.email = data.email;
-            }
-            if (data.phones != null) {
-                message.phones = data.phones.map(item => Person.PhoneNumber.fromObject(item));
-            }
+            const message = new CommunicatorModel({});
             return message;
         }
         toObject() {
             const data = {};
-            if (this.name != null) {
-                data.name = this.name;
-            }
-            if (this.id != null) {
-                data.id = this.id;
-            }
-            if (this.email != null) {
-                data.email = this.email;
-            }
-            if (this.phones != null) {
-                data.phones = this.phones.map((item) => item.toObject());
-            }
             return data;
         }
         serialize(w) {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.name.length)
-                writer.writeString(1, this.name);
-            if (this.id != 0)
-                writer.writeInt32(2, this.id);
-            if (this.email.length)
-                writer.writeString(3, this.email);
-            if (this.phones.length)
-                writer.writeRepeatedMessage(4, this.phones, (item) => item.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
         }
         static deserialize(bytes) {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new Person();
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new CommunicatorModel();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
                 switch (reader.getFieldNumber()) {
-                    case 1:
-                        message.name = reader.readString();
-                        break;
-                    case 2:
-                        message.id = reader.readInt32();
-                        break;
-                    case 3:
-                        message.email = reader.readString();
-                        break;
-                    case 4:
-                        reader.readMessage(message.phones, () => pb_1.Message.addToRepeatedWrapperField(message, 4, Person.PhoneNumber.deserialize(reader), Person.PhoneNumber));
-                        break;
                     default: reader.skipField();
                 }
             }
@@ -133,85 +48,159 @@ export var tutorial;
             return this.serialize();
         }
         static deserializeBinary(bytes) {
-            return Person.deserialize(bytes);
+            return CommunicatorModel.deserialize(bytes);
         }
     }
-    _Person_one_of_decls = new WeakMap();
-    tutorial.Person = Person;
-    (function (Person) {
-        var _PhoneNumber_one_of_decls;
-        let PhoneType;
-        (function (PhoneType) {
-            PhoneType[PhoneType["MOBILE"] = 0] = "MOBILE";
-            PhoneType[PhoneType["HOME"] = 1] = "HOME";
-            PhoneType[PhoneType["WORK"] = 2] = "WORK";
-        })(PhoneType = Person.PhoneType || (Person.PhoneType = {}));
-        class PhoneNumber extends pb_1.Message {
+    _CommunicatorModel_one_of_decls = new WeakMap();
+    vernite.CommunicatorModel = CommunicatorModel;
+    (function (CommunicatorModel) {
+        var _Channel_one_of_decls, _ChatUser_one_of_decls, _Message_one_of_decls;
+        class Channel extends pb_1.Message {
             constructor(data) {
                 super();
-                _PhoneNumber_one_of_decls.set(this, []);
-                pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], __classPrivateFieldGet(this, _PhoneNumber_one_of_decls, "f"));
+                _Channel_one_of_decls.set(this, []);
+                pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], __classPrivateFieldGet(this, _Channel_one_of_decls, "f"));
                 if (!Array.isArray(data) && typeof data == "object") {
-                    if ("number" in data && data.number != undefined) {
-                        this.number = data.number;
+                    if ("id" in data && data.id != undefined) {
+                        this.id = data.id;
                     }
-                    if ("type" in data && data.type != undefined) {
-                        this.type = data.type;
+                    if ("name" in data && data.name != undefined) {
+                        this.name = data.name;
+                    }
+                    if ("user" in data && data.user != undefined) {
+                        this.user = data.user;
+                    }
+                    if ("channel" in data && data.channel != undefined) {
+                        this.channel = data.channel;
+                    }
+                    if ("team" in data && data.team != undefined) {
+                        this.team = data.team;
+                    }
+                    if ("provider" in data && data.provider != undefined) {
+                        this.provider = data.provider;
                     }
                 }
             }
-            get number() {
+            get id() {
                 return pb_1.Message.getFieldWithDefault(this, 1, "");
             }
-            set number(value) {
+            set id(value) {
                 pb_1.Message.setField(this, 1, value);
             }
-            get type() {
-                return pb_1.Message.getFieldWithDefault(this, 2, Person.PhoneType.MOBILE);
+            get name() {
+                return pb_1.Message.getFieldWithDefault(this, 2, "");
             }
-            set type(value) {
+            set name(value) {
                 pb_1.Message.setField(this, 2, value);
             }
+            get user() {
+                return pb_1.Message.getFieldWithDefault(this, 3, "");
+            }
+            set user(value) {
+                pb_1.Message.setField(this, 3, value);
+            }
+            get channel() {
+                return pb_1.Message.getFieldWithDefault(this, 4, false);
+            }
+            set channel(value) {
+                pb_1.Message.setField(this, 4, value);
+            }
+            get team() {
+                return pb_1.Message.getFieldWithDefault(this, 5, "");
+            }
+            set team(value) {
+                pb_1.Message.setField(this, 5, value);
+            }
+            get provider() {
+                return pb_1.Message.getFieldWithDefault(this, 6, "");
+            }
+            set provider(value) {
+                pb_1.Message.setField(this, 6, value);
+            }
             static fromObject(data) {
-                const message = new PhoneNumber({});
-                if (data.number != null) {
-                    message.number = data.number;
+                const message = new Channel({});
+                if (data.id != null) {
+                    message.id = data.id;
                 }
-                if (data.type != null) {
-                    message.type = data.type;
+                if (data.name != null) {
+                    message.name = data.name;
+                }
+                if (data.user != null) {
+                    message.user = data.user;
+                }
+                if (data.channel != null) {
+                    message.channel = data.channel;
+                }
+                if (data.team != null) {
+                    message.team = data.team;
+                }
+                if (data.provider != null) {
+                    message.provider = data.provider;
                 }
                 return message;
             }
             toObject() {
                 const data = {};
-                if (this.number != null) {
-                    data.number = this.number;
+                if (this.id != null) {
+                    data.id = this.id;
                 }
-                if (this.type != null) {
-                    data.type = this.type;
+                if (this.name != null) {
+                    data.name = this.name;
+                }
+                if (this.user != null) {
+                    data.user = this.user;
+                }
+                if (this.channel != null) {
+                    data.channel = this.channel;
+                }
+                if (this.team != null) {
+                    data.team = this.team;
+                }
+                if (this.provider != null) {
+                    data.provider = this.provider;
                 }
                 return data;
             }
             serialize(w) {
                 const writer = w || new pb_1.BinaryWriter();
-                if (this.number.length)
-                    writer.writeString(1, this.number);
-                if (this.type != Person.PhoneType.MOBILE)
-                    writer.writeEnum(2, this.type);
+                if (this.id.length)
+                    writer.writeString(1, this.id);
+                if (this.name.length)
+                    writer.writeString(2, this.name);
+                if (this.user.length)
+                    writer.writeString(3, this.user);
+                if (this.channel != false)
+                    writer.writeBool(4, this.channel);
+                if (this.team.length)
+                    writer.writeString(5, this.team);
+                if (this.provider.length)
+                    writer.writeString(6, this.provider);
                 if (!w)
                     return writer.getResultBuffer();
             }
             static deserialize(bytes) {
-                const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new PhoneNumber();
+                const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new Channel();
                 while (reader.nextField()) {
                     if (reader.isEndGroup())
                         break;
                     switch (reader.getFieldNumber()) {
                         case 1:
-                            message.number = reader.readString();
+                            message.id = reader.readString();
                             break;
                         case 2:
-                            message.type = reader.readEnum();
+                            message.name = reader.readString();
+                            break;
+                        case 3:
+                            message.user = reader.readString();
+                            break;
+                        case 4:
+                            message.channel = reader.readBool();
+                            break;
+                        case 5:
+                            message.team = reader.readString();
+                            break;
+                        case 6:
+                            message.provider = reader.readString();
                             break;
                         default: reader.skipField();
                     }
@@ -222,58 +211,403 @@ export var tutorial;
                 return this.serialize();
             }
             static deserializeBinary(bytes) {
-                return PhoneNumber.deserialize(bytes);
+                return Channel.deserialize(bytes);
             }
         }
-        _PhoneNumber_one_of_decls = new WeakMap();
-        Person.PhoneNumber = PhoneNumber;
-    })(Person = tutorial.Person || (tutorial.Person = {}));
-    class AddressBook extends pb_1.Message {
+        _Channel_one_of_decls = new WeakMap();
+        CommunicatorModel.Channel = Channel;
+        class ChatUser extends pb_1.Message {
+            constructor(data) {
+                super();
+                _ChatUser_one_of_decls.set(this, []);
+                pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], __classPrivateFieldGet(this, _ChatUser_one_of_decls, "f"));
+                if (!Array.isArray(data) && typeof data == "object") {
+                    if ("id" in data && data.id != undefined) {
+                        this.id = data.id;
+                    }
+                    if ("team" in data && data.team != undefined) {
+                        this.team = data.team;
+                    }
+                    if ("name" in data && data.name != undefined) {
+                        this.name = data.name;
+                    }
+                    if ("displayName" in data && data.displayName != undefined) {
+                        this.displayName = data.displayName;
+                    }
+                    if ("bot" in data && data.bot != undefined) {
+                        this.bot = data.bot;
+                    }
+                    if ("avatar" in data && data.avatar != undefined) {
+                        this.avatar = data.avatar;
+                    }
+                    if ("provider" in data && data.provider != undefined) {
+                        this.provider = data.provider;
+                    }
+                }
+            }
+            get id() {
+                return pb_1.Message.getFieldWithDefault(this, 1, "");
+            }
+            set id(value) {
+                pb_1.Message.setField(this, 1, value);
+            }
+            get team() {
+                return pb_1.Message.getFieldWithDefault(this, 2, "");
+            }
+            set team(value) {
+                pb_1.Message.setField(this, 2, value);
+            }
+            get name() {
+                return pb_1.Message.getFieldWithDefault(this, 3, "");
+            }
+            set name(value) {
+                pb_1.Message.setField(this, 3, value);
+            }
+            get displayName() {
+                return pb_1.Message.getFieldWithDefault(this, 4, "");
+            }
+            set displayName(value) {
+                pb_1.Message.setField(this, 4, value);
+            }
+            get bot() {
+                return pb_1.Message.getFieldWithDefault(this, 5, false);
+            }
+            set bot(value) {
+                pb_1.Message.setField(this, 5, value);
+            }
+            get avatar() {
+                return pb_1.Message.getFieldWithDefault(this, 6, "");
+            }
+            set avatar(value) {
+                pb_1.Message.setField(this, 6, value);
+            }
+            get provider() {
+                return pb_1.Message.getFieldWithDefault(this, 7, "");
+            }
+            set provider(value) {
+                pb_1.Message.setField(this, 7, value);
+            }
+            static fromObject(data) {
+                const message = new ChatUser({});
+                if (data.id != null) {
+                    message.id = data.id;
+                }
+                if (data.team != null) {
+                    message.team = data.team;
+                }
+                if (data.name != null) {
+                    message.name = data.name;
+                }
+                if (data.displayName != null) {
+                    message.displayName = data.displayName;
+                }
+                if (data.bot != null) {
+                    message.bot = data.bot;
+                }
+                if (data.avatar != null) {
+                    message.avatar = data.avatar;
+                }
+                if (data.provider != null) {
+                    message.provider = data.provider;
+                }
+                return message;
+            }
+            toObject() {
+                const data = {};
+                if (this.id != null) {
+                    data.id = this.id;
+                }
+                if (this.team != null) {
+                    data.team = this.team;
+                }
+                if (this.name != null) {
+                    data.name = this.name;
+                }
+                if (this.displayName != null) {
+                    data.displayName = this.displayName;
+                }
+                if (this.bot != null) {
+                    data.bot = this.bot;
+                }
+                if (this.avatar != null) {
+                    data.avatar = this.avatar;
+                }
+                if (this.provider != null) {
+                    data.provider = this.provider;
+                }
+                return data;
+            }
+            serialize(w) {
+                const writer = w || new pb_1.BinaryWriter();
+                if (this.id.length)
+                    writer.writeString(1, this.id);
+                if (this.team.length)
+                    writer.writeString(2, this.team);
+                if (this.name.length)
+                    writer.writeString(3, this.name);
+                if (this.displayName.length)
+                    writer.writeString(4, this.displayName);
+                if (this.bot != false)
+                    writer.writeBool(5, this.bot);
+                if (this.avatar.length)
+                    writer.writeString(6, this.avatar);
+                if (this.provider.length)
+                    writer.writeString(7, this.provider);
+                if (!w)
+                    return writer.getResultBuffer();
+            }
+            static deserialize(bytes) {
+                const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new ChatUser();
+                while (reader.nextField()) {
+                    if (reader.isEndGroup())
+                        break;
+                    switch (reader.getFieldNumber()) {
+                        case 1:
+                            message.id = reader.readString();
+                            break;
+                        case 2:
+                            message.team = reader.readString();
+                            break;
+                        case 3:
+                            message.name = reader.readString();
+                            break;
+                        case 4:
+                            message.displayName = reader.readString();
+                            break;
+                        case 5:
+                            message.bot = reader.readBool();
+                            break;
+                        case 6:
+                            message.avatar = reader.readString();
+                            break;
+                        case 7:
+                            message.provider = reader.readString();
+                            break;
+                        default: reader.skipField();
+                    }
+                }
+                return message;
+            }
+            serializeBinary() {
+                return this.serialize();
+            }
+            static deserializeBinary(bytes) {
+                return ChatUser.deserialize(bytes);
+            }
+        }
+        _ChatUser_one_of_decls = new WeakMap();
+        CommunicatorModel.ChatUser = ChatUser;
+        class Message extends pb_1.Message {
+            constructor(data) {
+                super();
+                _Message_one_of_decls.set(this, []);
+                pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], __classPrivateFieldGet(this, _Message_one_of_decls, "f"));
+                if (!Array.isArray(data) && typeof data == "object") {
+                    if ("id" in data && data.id != undefined) {
+                        this.id = data.id;
+                    }
+                    if ("user" in data && data.user != undefined) {
+                        this.user = data.user;
+                    }
+                    if ("channel" in data && data.channel != undefined) {
+                        this.channel = data.channel;
+                    }
+                    if ("content" in data && data.content != undefined) {
+                        this.content = data.content;
+                    }
+                    if ("timestamp" in data && data.timestamp != undefined) {
+                        this.timestamp = data.timestamp;
+                    }
+                    if ("provider" in data && data.provider != undefined) {
+                        this.provider = data.provider;
+                    }
+                }
+            }
+            get id() {
+                return pb_1.Message.getFieldWithDefault(this, 1, "");
+            }
+            set id(value) {
+                pb_1.Message.setField(this, 1, value);
+            }
+            get user() {
+                return pb_1.Message.getFieldWithDefault(this, 2, "");
+            }
+            set user(value) {
+                pb_1.Message.setField(this, 2, value);
+            }
+            get channel() {
+                return pb_1.Message.getFieldWithDefault(this, 3, "");
+            }
+            set channel(value) {
+                pb_1.Message.setField(this, 3, value);
+            }
+            get content() {
+                return pb_1.Message.getFieldWithDefault(this, 4, "");
+            }
+            set content(value) {
+                pb_1.Message.setField(this, 4, value);
+            }
+            get timestamp() {
+                return pb_1.Message.getFieldWithDefault(this, 5, "");
+            }
+            set timestamp(value) {
+                pb_1.Message.setField(this, 5, value);
+            }
+            get provider() {
+                return pb_1.Message.getFieldWithDefault(this, 6, "");
+            }
+            set provider(value) {
+                pb_1.Message.setField(this, 6, value);
+            }
+            static fromObject(data) {
+                const message = new Message({});
+                if (data.id != null) {
+                    message.id = data.id;
+                }
+                if (data.user != null) {
+                    message.user = data.user;
+                }
+                if (data.channel != null) {
+                    message.channel = data.channel;
+                }
+                if (data.content != null) {
+                    message.content = data.content;
+                }
+                if (data.timestamp != null) {
+                    message.timestamp = data.timestamp;
+                }
+                if (data.provider != null) {
+                    message.provider = data.provider;
+                }
+                return message;
+            }
+            toObject() {
+                const data = {};
+                if (this.id != null) {
+                    data.id = this.id;
+                }
+                if (this.user != null) {
+                    data.user = this.user;
+                }
+                if (this.channel != null) {
+                    data.channel = this.channel;
+                }
+                if (this.content != null) {
+                    data.content = this.content;
+                }
+                if (this.timestamp != null) {
+                    data.timestamp = this.timestamp;
+                }
+                if (this.provider != null) {
+                    data.provider = this.provider;
+                }
+                return data;
+            }
+            serialize(w) {
+                const writer = w || new pb_1.BinaryWriter();
+                if (this.id.length)
+                    writer.writeString(1, this.id);
+                if (this.user.length)
+                    writer.writeString(2, this.user);
+                if (this.channel.length)
+                    writer.writeString(3, this.channel);
+                if (this.content.length)
+                    writer.writeString(4, this.content);
+                if (this.timestamp.length)
+                    writer.writeString(5, this.timestamp);
+                if (this.provider.length)
+                    writer.writeString(6, this.provider);
+                if (!w)
+                    return writer.getResultBuffer();
+            }
+            static deserialize(bytes) {
+                const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new Message();
+                while (reader.nextField()) {
+                    if (reader.isEndGroup())
+                        break;
+                    switch (reader.getFieldNumber()) {
+                        case 1:
+                            message.id = reader.readString();
+                            break;
+                        case 2:
+                            message.user = reader.readString();
+                            break;
+                        case 3:
+                            message.channel = reader.readString();
+                            break;
+                        case 4:
+                            message.content = reader.readString();
+                            break;
+                        case 5:
+                            message.timestamp = reader.readString();
+                            break;
+                        case 6:
+                            message.provider = reader.readString();
+                            break;
+                        default: reader.skipField();
+                    }
+                }
+                return message;
+            }
+            serializeBinary() {
+                return this.serialize();
+            }
+            static deserializeBinary(bytes) {
+                return Message.deserialize(bytes);
+            }
+        }
+        _Message_one_of_decls = new WeakMap();
+        CommunicatorModel.Message = Message;
+    })(CommunicatorModel = vernite.CommunicatorModel || (vernite.CommunicatorModel = {}));
+    class Packet extends pb_1.Message {
         constructor(data) {
             super();
-            _AddressBook_one_of_decls.set(this, []);
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], __classPrivateFieldGet(this, _AddressBook_one_of_decls, "f"));
+            _Packet_one_of_decls.set(this, []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], __classPrivateFieldGet(this, _Packet_one_of_decls, "f"));
             if (!Array.isArray(data) && typeof data == "object") {
-                if ("people" in data && data.people != undefined) {
-                    this.people = data.people;
+                if ("payload" in data && data.payload != undefined) {
+                    this.payload = data.payload;
                 }
             }
         }
-        get people() {
-            return pb_1.Message.getRepeatedWrapperField(this, Person, 1);
+        get payload() {
+            return pb_1.Message.getWrapperField(this, dependency_1.google.protobuf.Any, 1);
         }
-        set people(value) {
-            pb_1.Message.setRepeatedWrapperField(this, 1, value);
+        set payload(value) {
+            pb_1.Message.setWrapperField(this, 1, value);
+        }
+        get has_payload() {
+            return pb_1.Message.getField(this, 1) != null;
         }
         static fromObject(data) {
-            const message = new AddressBook({});
-            if (data.people != null) {
-                message.people = data.people.map(item => Person.fromObject(item));
+            const message = new Packet({});
+            if (data.payload != null) {
+                message.payload = dependency_1.google.protobuf.Any.fromObject(data.payload);
             }
             return message;
         }
         toObject() {
             const data = {};
-            if (this.people != null) {
-                data.people = this.people.map((item) => item.toObject());
+            if (this.payload != null) {
+                data.payload = this.payload.toObject();
             }
             return data;
         }
         serialize(w) {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.people.length)
-                writer.writeRepeatedMessage(1, this.people, (item) => item.serialize(writer));
+            if (this.has_payload)
+                writer.writeMessage(1, this.payload, () => this.payload.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
         }
         static deserialize(bytes) {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new AddressBook();
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new Packet();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        reader.readMessage(message.people, () => pb_1.Message.addToRepeatedWrapperField(message, 1, Person.deserialize(reader), Person));
+                        reader.readMessage(message.payload, () => message.payload = dependency_1.google.protobuf.Any.deserialize(reader));
                         break;
                     default: reader.skipField();
                 }
@@ -284,268 +618,9 @@ export var tutorial;
             return this.serialize();
         }
         static deserializeBinary(bytes) {
-            return AddressBook.deserialize(bytes);
+            return Packet.deserialize(bytes);
         }
     }
-    _AddressBook_one_of_decls = new WeakMap();
-    tutorial.AddressBook = AddressBook;
-    class Author extends pb_1.Message {
-        constructor(data) {
-            super();
-            _Author_one_of_decls.set(this, []);
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], __classPrivateFieldGet(this, _Author_one_of_decls, "f"));
-            if (!Array.isArray(data) && typeof data == "object") {
-                if ("name" in data && data.name != undefined) {
-                    this.name = data.name;
-                }
-                if ("role" in data && data.role != undefined) {
-                    this.role = data.role;
-                }
-            }
-        }
-        get name() {
-            return pb_1.Message.getFieldWithDefault(this, 1, "");
-        }
-        set name(value) {
-            pb_1.Message.setField(this, 1, value);
-        }
-        get role() {
-            return pb_1.Message.getFieldWithDefault(this, 2, "");
-        }
-        set role(value) {
-            pb_1.Message.setField(this, 2, value);
-        }
-        static fromObject(data) {
-            const message = new Author({});
-            if (data.name != null) {
-                message.name = data.name;
-            }
-            if (data.role != null) {
-                message.role = data.role;
-            }
-            return message;
-        }
-        toObject() {
-            const data = {};
-            if (this.name != null) {
-                data.name = this.name;
-            }
-            if (this.role != null) {
-                data.role = this.role;
-            }
-            return data;
-        }
-        serialize(w) {
-            const writer = w || new pb_1.BinaryWriter();
-            if (this.name.length)
-                writer.writeString(1, this.name);
-            if (this.role.length)
-                writer.writeString(2, this.role);
-            if (!w)
-                return writer.getResultBuffer();
-        }
-        static deserialize(bytes) {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new Author();
-            while (reader.nextField()) {
-                if (reader.isEndGroup())
-                    break;
-                switch (reader.getFieldNumber()) {
-                    case 1:
-                        message.name = reader.readString();
-                        break;
-                    case 2:
-                        message.role = reader.readString();
-                        break;
-                    default: reader.skipField();
-                }
-            }
-            return message;
-        }
-        serializeBinary() {
-            return this.serialize();
-        }
-        static deserializeBinary(bytes) {
-            return Author.deserialize(bytes);
-        }
-    }
-    _Author_one_of_decls = new WeakMap();
-    tutorial.Author = Author;
-    class Change extends pb_1.Message {
-        constructor(data) {
-            super();
-            _Change_one_of_decls.set(this, [[4, 5]]);
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], __classPrivateFieldGet(this, _Change_one_of_decls, "f"));
-            if (!Array.isArray(data) && typeof data == "object") {
-                if ("kind" in data && data.kind != undefined) {
-                    this.kind = data.kind;
-                }
-                if ("patch" in data && data.patch != undefined) {
-                    this.patch = data.patch;
-                }
-                if ("tags" in data && data.tags != undefined) {
-                    this.tags = data.tags;
-                }
-                if ("name" in data && data.name != undefined) {
-                    this.name = data.name;
-                }
-                if ("id" in data && data.id != undefined) {
-                    this.id = data.id;
-                }
-                if ("author" in data && data.author != undefined) {
-                    this.author = data.author;
-                }
-            }
-        }
-        get kind() {
-            return pb_1.Message.getFieldWithDefault(this, 1, Kind.UPDATED);
-        }
-        set kind(value) {
-            pb_1.Message.setField(this, 1, value);
-        }
-        get patch() {
-            return pb_1.Message.getFieldWithDefault(this, 2, "");
-        }
-        set patch(value) {
-            pb_1.Message.setField(this, 2, value);
-        }
-        get tags() {
-            return pb_1.Message.getFieldWithDefault(this, 3, []);
-        }
-        set tags(value) {
-            pb_1.Message.setField(this, 3, value);
-        }
-        get name() {
-            return pb_1.Message.getFieldWithDefault(this, 4, "");
-        }
-        set name(value) {
-            pb_1.Message.setOneofField(this, 4, __classPrivateFieldGet(this, _Change_one_of_decls, "f")[0], value);
-        }
-        get has_name() {
-            return pb_1.Message.getField(this, 4) != null;
-        }
-        get id() {
-            return pb_1.Message.getFieldWithDefault(this, 5, "");
-        }
-        set id(value) {
-            pb_1.Message.setOneofField(this, 5, __classPrivateFieldGet(this, _Change_one_of_decls, "f")[0], value);
-        }
-        get has_id() {
-            return pb_1.Message.getField(this, 5) != null;
-        }
-        get author() {
-            return pb_1.Message.getWrapperField(this, Author, 6);
-        }
-        set author(value) {
-            pb_1.Message.setWrapperField(this, 6, value);
-        }
-        get has_author() {
-            return pb_1.Message.getField(this, 6) != null;
-        }
-        get name_or_id() {
-            const cases = {
-                0: "none",
-                4: "name",
-                5: "id"
-            };
-            return cases[pb_1.Message.computeOneofCase(this, [4, 5])];
-        }
-        static fromObject(data) {
-            const message = new Change({});
-            if (data.kind != null) {
-                message.kind = data.kind;
-            }
-            if (data.patch != null) {
-                message.patch = data.patch;
-            }
-            if (data.tags != null) {
-                message.tags = data.tags;
-            }
-            if (data.name != null) {
-                message.name = data.name;
-            }
-            if (data.id != null) {
-                message.id = data.id;
-            }
-            if (data.author != null) {
-                message.author = Author.fromObject(data.author);
-            }
-            return message;
-        }
-        toObject() {
-            const data = {};
-            if (this.kind != null) {
-                data.kind = this.kind;
-            }
-            if (this.patch != null) {
-                data.patch = this.patch;
-            }
-            if (this.tags != null) {
-                data.tags = this.tags;
-            }
-            if (this.name != null) {
-                data.name = this.name;
-            }
-            if (this.id != null) {
-                data.id = this.id;
-            }
-            if (this.author != null) {
-                data.author = this.author.toObject();
-            }
-            return data;
-        }
-        serialize(w) {
-            const writer = w || new pb_1.BinaryWriter();
-            if (this.kind != Kind.UPDATED)
-                writer.writeEnum(1, this.kind);
-            if (this.patch.length)
-                writer.writeString(2, this.patch);
-            if (this.tags.length)
-                writer.writeRepeatedString(3, this.tags);
-            if (this.has_name)
-                writer.writeString(4, this.name);
-            if (this.has_id)
-                writer.writeString(5, this.id);
-            if (this.has_author)
-                writer.writeMessage(6, this.author, () => this.author.serialize(writer));
-            if (!w)
-                return writer.getResultBuffer();
-        }
-        static deserialize(bytes) {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new Change();
-            while (reader.nextField()) {
-                if (reader.isEndGroup())
-                    break;
-                switch (reader.getFieldNumber()) {
-                    case 1:
-                        message.kind = reader.readEnum();
-                        break;
-                    case 2:
-                        message.patch = reader.readString();
-                        break;
-                    case 3:
-                        pb_1.Message.addToRepeatedField(message, 3, reader.readString());
-                        break;
-                    case 4:
-                        message.name = reader.readString();
-                        break;
-                    case 5:
-                        message.id = reader.readString();
-                        break;
-                    case 6:
-                        reader.readMessage(message.author, () => message.author = Author.deserialize(reader));
-                        break;
-                    default: reader.skipField();
-                }
-            }
-            return message;
-        }
-        serializeBinary() {
-            return this.serialize();
-        }
-        static deserializeBinary(bytes) {
-            return Change.deserialize(bytes);
-        }
-    }
-    _Change_one_of_decls = new WeakMap();
-    tutorial.Change = Change;
-})(tutorial || (tutorial = {}));
+    _Packet_one_of_decls = new WeakMap();
+    vernite.Packet = Packet;
+})(vernite || (vernite = {}));
