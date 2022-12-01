@@ -6,6 +6,11 @@
 import * as dependency_1 from "./google/protobuf/any";
 import * as pb_1 from "google-protobuf";
 export declare namespace vernite {
+    enum BasicAction {
+        ADDED = 0,
+        UPDATED = 1,
+        REMOVED = 2
+    }
     class KeepAlive extends pb_1.Message {
         #private;
         constructor(data?: any[] | {
@@ -193,6 +198,7 @@ export declare namespace vernite {
             createdBy?: number;
             releaseId?: number;
             projectId?: number;
+            action?: BasicAction;
         });
         get id(): number;
         set id(value: number);
@@ -224,6 +230,8 @@ export declare namespace vernite {
         set releaseId(value: number);
         get projectId(): number;
         set projectId(value: number);
+        get action(): BasicAction;
+        set action(value: BasicAction);
         static fromObject(data: {
             id?: number;
             name?: string;
@@ -240,6 +248,7 @@ export declare namespace vernite {
             createdBy?: number;
             releaseId?: number;
             projectId?: number;
+            action?: BasicAction;
         }): Task;
         toObject(): {
             id?: number;
@@ -257,6 +266,7 @@ export declare namespace vernite {
             createdBy?: number;
             releaseId?: number;
             projectId?: number;
+            action?: BasicAction;
         };
         serialize(): Uint8Array;
         serialize(w: pb_1.BinaryWriter): void;

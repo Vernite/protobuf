@@ -13,6 +13,12 @@ import * as pb_1 from "google-protobuf";
 export var vernite;
 (function (vernite) {
     var _KeepAlive_one_of_decls, _CommunicatorModel_one_of_decls, _Task_one_of_decls, _Packet_one_of_decls;
+    let BasicAction;
+    (function (BasicAction) {
+        BasicAction[BasicAction["ADDED"] = 0] = "ADDED";
+        BasicAction[BasicAction["UPDATED"] = 1] = "UPDATED";
+        BasicAction[BasicAction["REMOVED"] = 2] = "REMOVED";
+    })(BasicAction = vernite.BasicAction || (vernite.BasicAction = {}));
     class KeepAlive extends pb_1.Message {
         constructor(data) {
             super();
@@ -671,6 +677,9 @@ export var vernite;
                 if ("projectId" in data && data.projectId != undefined) {
                     this.projectId = data.projectId;
                 }
+                if ("action" in data && data.action != undefined) {
+                    this.action = data.action;
+                }
             }
         }
         get id() {
@@ -763,6 +772,12 @@ export var vernite;
         set projectId(value) {
             pb_1.Message.setField(this, 15, value);
         }
+        get action() {
+            return pb_1.Message.getFieldWithDefault(this, 16, BasicAction.ADDED);
+        }
+        set action(value) {
+            pb_1.Message.setField(this, 16, value);
+        }
         static fromObject(data) {
             const message = new Task({});
             if (data.id != null) {
@@ -809,6 +824,9 @@ export var vernite;
             }
             if (data.projectId != null) {
                 message.projectId = data.projectId;
+            }
+            if (data.action != null) {
+                message.action = data.action;
             }
             return message;
         }
@@ -859,6 +877,9 @@ export var vernite;
             if (this.projectId != null) {
                 data.projectId = this.projectId;
             }
+            if (this.action != null) {
+                data.action = this.action;
+            }
             return data;
         }
         serialize(w) {
@@ -893,6 +914,8 @@ export var vernite;
                 writer.writeInt64(14, this.releaseId);
             if (this.projectId != 0)
                 writer.writeInt64(15, this.projectId);
+            if (this.action != BasicAction.ADDED)
+                writer.writeEnum(16, this.action);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -946,6 +969,9 @@ export var vernite;
                         break;
                     case 15:
                         message.projectId = reader.readInt64();
+                        break;
+                    case 16:
+                        message.action = reader.readEnum();
                         break;
                     default: reader.skipField();
                 }

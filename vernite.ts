@@ -6,6 +6,11 @@
 import * as dependency_1 from "./google/protobuf/any";
 import * as pb_1 from "google-protobuf";
 export namespace vernite {
+    export enum BasicAction {
+        ADDED = 0,
+        UPDATED = 1,
+        REMOVED = 2
+    }
     export class KeepAlive extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
@@ -702,6 +707,7 @@ export namespace vernite {
             createdBy?: number;
             releaseId?: number;
             projectId?: number;
+            action?: BasicAction;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
@@ -750,6 +756,9 @@ export namespace vernite {
                 }
                 if ("projectId" in data && data.projectId != undefined) {
                     this.projectId = data.projectId;
+                }
+                if ("action" in data && data.action != undefined) {
+                    this.action = data.action;
                 }
             }
         }
@@ -843,6 +852,12 @@ export namespace vernite {
         set projectId(value: number) {
             pb_1.Message.setField(this, 15, value);
         }
+        get action() {
+            return pb_1.Message.getFieldWithDefault(this, 16, BasicAction.ADDED) as BasicAction;
+        }
+        set action(value: BasicAction) {
+            pb_1.Message.setField(this, 16, value);
+        }
         static fromObject(data: {
             id?: number;
             name?: string;
@@ -859,6 +874,7 @@ export namespace vernite {
             createdBy?: number;
             releaseId?: number;
             projectId?: number;
+            action?: BasicAction;
         }): Task {
             const message = new Task({});
             if (data.id != null) {
@@ -906,6 +922,9 @@ export namespace vernite {
             if (data.projectId != null) {
                 message.projectId = data.projectId;
             }
+            if (data.action != null) {
+                message.action = data.action;
+            }
             return message;
         }
         toObject() {
@@ -925,6 +944,7 @@ export namespace vernite {
                 createdBy?: number;
                 releaseId?: number;
                 projectId?: number;
+                action?: BasicAction;
             } = {};
             if (this.id != null) {
                 data.id = this.id;
@@ -971,6 +991,9 @@ export namespace vernite {
             if (this.projectId != null) {
                 data.projectId = this.projectId;
             }
+            if (this.action != null) {
+                data.action = this.action;
+            }
             return data;
         }
         serialize(): Uint8Array;
@@ -1007,6 +1030,8 @@ export namespace vernite {
                 writer.writeInt64(14, this.releaseId);
             if (this.projectId != 0)
                 writer.writeInt64(15, this.projectId);
+            if (this.action != BasicAction.ADDED)
+                writer.writeEnum(16, this.action);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -1060,6 +1085,9 @@ export namespace vernite {
                         break;
                     case 15:
                         message.projectId = reader.readInt64();
+                        break;
+                    case 16:
+                        message.action = reader.readEnum();
                         break;
                     default: reader.skipField();
                 }
