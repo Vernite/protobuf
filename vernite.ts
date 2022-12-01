@@ -697,15 +697,9 @@ export namespace vernite {
             description?: string;
             createdAt?: number;
             type?: number;
-            deadline?: number;
-            estimatedDate?: number;
             priority?: string;
             statusId?: number;
-            sprintId?: number;
-            assigneeId?: number;
-            parentTaskId?: number;
             createdBy?: number;
-            releaseId?: number;
             projectId?: number;
             action?: BasicAction;
         }) {
@@ -727,32 +721,14 @@ export namespace vernite {
                 if ("type" in data && data.type != undefined) {
                     this.type = data.type;
                 }
-                if ("deadline" in data && data.deadline != undefined) {
-                    this.deadline = data.deadline;
-                }
-                if ("estimatedDate" in data && data.estimatedDate != undefined) {
-                    this.estimatedDate = data.estimatedDate;
-                }
                 if ("priority" in data && data.priority != undefined) {
                     this.priority = data.priority;
                 }
                 if ("statusId" in data && data.statusId != undefined) {
                     this.statusId = data.statusId;
                 }
-                if ("sprintId" in data && data.sprintId != undefined) {
-                    this.sprintId = data.sprintId;
-                }
-                if ("assigneeId" in data && data.assigneeId != undefined) {
-                    this.assigneeId = data.assigneeId;
-                }
-                if ("parentTaskId" in data && data.parentTaskId != undefined) {
-                    this.parentTaskId = data.parentTaskId;
-                }
                 if ("createdBy" in data && data.createdBy != undefined) {
                     this.createdBy = data.createdBy;
-                }
-                if ("releaseId" in data && data.releaseId != undefined) {
-                    this.releaseId = data.releaseId;
                 }
                 if ("projectId" in data && data.projectId != undefined) {
                     this.projectId = data.projectId;
@@ -792,18 +768,6 @@ export namespace vernite {
         set type(value: number) {
             pb_1.Message.setField(this, 5, value);
         }
-        get deadline() {
-            return pb_1.Message.getFieldWithDefault(this, 6, 0) as number;
-        }
-        set deadline(value: number) {
-            pb_1.Message.setField(this, 6, value);
-        }
-        get estimatedDate() {
-            return pb_1.Message.getFieldWithDefault(this, 7, 0) as number;
-        }
-        set estimatedDate(value: number) {
-            pb_1.Message.setField(this, 7, value);
-        }
         get priority() {
             return pb_1.Message.getFieldWithDefault(this, 8, "") as string;
         }
@@ -816,35 +780,11 @@ export namespace vernite {
         set statusId(value: number) {
             pb_1.Message.setField(this, 9, value);
         }
-        get sprintId() {
-            return pb_1.Message.getFieldWithDefault(this, 10, 0) as number;
-        }
-        set sprintId(value: number) {
-            pb_1.Message.setField(this, 10, value);
-        }
-        get assigneeId() {
-            return pb_1.Message.getFieldWithDefault(this, 11, 0) as number;
-        }
-        set assigneeId(value: number) {
-            pb_1.Message.setField(this, 11, value);
-        }
-        get parentTaskId() {
-            return pb_1.Message.getFieldWithDefault(this, 12, 0) as number;
-        }
-        set parentTaskId(value: number) {
-            pb_1.Message.setField(this, 12, value);
-        }
         get createdBy() {
             return pb_1.Message.getFieldWithDefault(this, 13, 0) as number;
         }
         set createdBy(value: number) {
             pb_1.Message.setField(this, 13, value);
-        }
-        get releaseId() {
-            return pb_1.Message.getFieldWithDefault(this, 14, 0) as number;
-        }
-        set releaseId(value: number) {
-            pb_1.Message.setField(this, 14, value);
         }
         get projectId() {
             return pb_1.Message.getFieldWithDefault(this, 15, 0) as number;
@@ -864,15 +804,9 @@ export namespace vernite {
             description?: string;
             createdAt?: number;
             type?: number;
-            deadline?: number;
-            estimatedDate?: number;
             priority?: string;
             statusId?: number;
-            sprintId?: number;
-            assigneeId?: number;
-            parentTaskId?: number;
             createdBy?: number;
-            releaseId?: number;
             projectId?: number;
             action?: BasicAction;
         }): Task {
@@ -892,32 +826,14 @@ export namespace vernite {
             if (data.type != null) {
                 message.type = data.type;
             }
-            if (data.deadline != null) {
-                message.deadline = data.deadline;
-            }
-            if (data.estimatedDate != null) {
-                message.estimatedDate = data.estimatedDate;
-            }
             if (data.priority != null) {
                 message.priority = data.priority;
             }
             if (data.statusId != null) {
                 message.statusId = data.statusId;
             }
-            if (data.sprintId != null) {
-                message.sprintId = data.sprintId;
-            }
-            if (data.assigneeId != null) {
-                message.assigneeId = data.assigneeId;
-            }
-            if (data.parentTaskId != null) {
-                message.parentTaskId = data.parentTaskId;
-            }
             if (data.createdBy != null) {
                 message.createdBy = data.createdBy;
-            }
-            if (data.releaseId != null) {
-                message.releaseId = data.releaseId;
             }
             if (data.projectId != null) {
                 message.projectId = data.projectId;
@@ -934,15 +850,9 @@ export namespace vernite {
                 description?: string;
                 createdAt?: number;
                 type?: number;
-                deadline?: number;
-                estimatedDate?: number;
                 priority?: string;
                 statusId?: number;
-                sprintId?: number;
-                assigneeId?: number;
-                parentTaskId?: number;
                 createdBy?: number;
-                releaseId?: number;
                 projectId?: number;
                 action?: BasicAction;
             } = {};
@@ -961,32 +871,14 @@ export namespace vernite {
             if (this.type != null) {
                 data.type = this.type;
             }
-            if (this.deadline != null) {
-                data.deadline = this.deadline;
-            }
-            if (this.estimatedDate != null) {
-                data.estimatedDate = this.estimatedDate;
-            }
             if (this.priority != null) {
                 data.priority = this.priority;
             }
             if (this.statusId != null) {
                 data.statusId = this.statusId;
             }
-            if (this.sprintId != null) {
-                data.sprintId = this.sprintId;
-            }
-            if (this.assigneeId != null) {
-                data.assigneeId = this.assigneeId;
-            }
-            if (this.parentTaskId != null) {
-                data.parentTaskId = this.parentTaskId;
-            }
             if (this.createdBy != null) {
                 data.createdBy = this.createdBy;
-            }
-            if (this.releaseId != null) {
-                data.releaseId = this.releaseId;
             }
             if (this.projectId != null) {
                 data.projectId = this.projectId;
@@ -1010,24 +902,12 @@ export namespace vernite {
                 writer.writeInt64(4, this.createdAt);
             if (this.type != 0)
                 writer.writeInt32(5, this.type);
-            if (this.deadline != 0)
-                writer.writeInt64(6, this.deadline);
-            if (this.estimatedDate != 0)
-                writer.writeInt64(7, this.estimatedDate);
             if (this.priority.length)
                 writer.writeString(8, this.priority);
             if (this.statusId != 0)
                 writer.writeInt64(9, this.statusId);
-            if (this.sprintId != 0)
-                writer.writeInt64(10, this.sprintId);
-            if (this.assigneeId != 0)
-                writer.writeInt64(11, this.assigneeId);
-            if (this.parentTaskId != 0)
-                writer.writeInt64(12, this.parentTaskId);
             if (this.createdBy != 0)
                 writer.writeInt64(13, this.createdBy);
-            if (this.releaseId != 0)
-                writer.writeInt64(14, this.releaseId);
             if (this.projectId != 0)
                 writer.writeInt64(15, this.projectId);
             if (this.action != BasicAction.ADDED)
@@ -1056,32 +936,14 @@ export namespace vernite {
                     case 5:
                         message.type = reader.readInt32();
                         break;
-                    case 6:
-                        message.deadline = reader.readInt64();
-                        break;
-                    case 7:
-                        message.estimatedDate = reader.readInt64();
-                        break;
                     case 8:
                         message.priority = reader.readString();
                         break;
                     case 9:
                         message.statusId = reader.readInt64();
                         break;
-                    case 10:
-                        message.sprintId = reader.readInt64();
-                        break;
-                    case 11:
-                        message.assigneeId = reader.readInt64();
-                        break;
-                    case 12:
-                        message.parentTaskId = reader.readInt64();
-                        break;
                     case 13:
                         message.createdBy = reader.readInt64();
-                        break;
-                    case 14:
-                        message.releaseId = reader.readInt64();
                         break;
                     case 15:
                         message.projectId = reader.readInt64();
