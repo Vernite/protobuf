@@ -6,6 +6,25 @@
 import * as dependency_1 from "./google/protobuf/any";
 import * as pb_1 from "google-protobuf";
 export declare namespace vernite {
+    class KeepAlive extends pb_1.Message {
+        #private;
+        constructor(data?: any[] | {
+            id?: number;
+        });
+        get id(): number;
+        set id(value: number);
+        static fromObject(data: {
+            id?: number;
+        }): KeepAlive;
+        toObject(): {
+            id?: number;
+        };
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): KeepAlive;
+        serializeBinary(): Uint8Array;
+        static deserializeBinary(bytes: Uint8Array): KeepAlive;
+    }
     class CommunicatorModel extends pb_1.Message {
         #private;
         constructor(data?: any[] | {});
@@ -118,7 +137,7 @@ export declare namespace vernite {
                 user?: string;
                 channel?: string;
                 content?: string;
-                timestamp?: string;
+                timestamp?: number;
                 provider?: string;
             });
             get id(): string;
@@ -129,8 +148,8 @@ export declare namespace vernite {
             set channel(value: string);
             get content(): string;
             set content(value: string);
-            get timestamp(): string;
-            set timestamp(value: string);
+            get timestamp(): number;
+            set timestamp(value: number);
             get provider(): string;
             set provider(value: string);
             static fromObject(data: {
@@ -138,7 +157,7 @@ export declare namespace vernite {
                 user?: string;
                 channel?: string;
                 content?: string;
-                timestamp?: string;
+                timestamp?: number;
                 provider?: string;
             }): Message;
             toObject(): {
@@ -146,7 +165,7 @@ export declare namespace vernite {
                 user?: string;
                 channel?: string;
                 content?: string;
-                timestamp?: string;
+                timestamp?: number;
                 provider?: string;
             };
             serialize(): Uint8Array;
@@ -155,6 +174,95 @@ export declare namespace vernite {
             serializeBinary(): Uint8Array;
             static deserializeBinary(bytes: Uint8Array): Message;
         }
+    }
+    class Task extends pb_1.Message {
+        #private;
+        constructor(data?: any[] | {
+            id?: number;
+            name?: string;
+            description?: string;
+            createdAt?: number;
+            type?: number;
+            deadline?: number;
+            estimatedDate?: number;
+            priority?: string;
+            statusId?: number;
+            sprintId?: number;
+            assigneeId?: number;
+            parentTaskId?: number;
+            createdBy?: number;
+            releaseId?: number;
+            projectId?: number;
+        });
+        get id(): number;
+        set id(value: number);
+        get name(): string;
+        set name(value: string);
+        get description(): string;
+        set description(value: string);
+        get createdAt(): number;
+        set createdAt(value: number);
+        get type(): number;
+        set type(value: number);
+        get deadline(): number;
+        set deadline(value: number);
+        get estimatedDate(): number;
+        set estimatedDate(value: number);
+        get priority(): string;
+        set priority(value: string);
+        get statusId(): number;
+        set statusId(value: number);
+        get sprintId(): number;
+        set sprintId(value: number);
+        get assigneeId(): number;
+        set assigneeId(value: number);
+        get parentTaskId(): number;
+        set parentTaskId(value: number);
+        get createdBy(): number;
+        set createdBy(value: number);
+        get releaseId(): number;
+        set releaseId(value: number);
+        get projectId(): number;
+        set projectId(value: number);
+        static fromObject(data: {
+            id?: number;
+            name?: string;
+            description?: string;
+            createdAt?: number;
+            type?: number;
+            deadline?: number;
+            estimatedDate?: number;
+            priority?: string;
+            statusId?: number;
+            sprintId?: number;
+            assigneeId?: number;
+            parentTaskId?: number;
+            createdBy?: number;
+            releaseId?: number;
+            projectId?: number;
+        }): Task;
+        toObject(): {
+            id?: number;
+            name?: string;
+            description?: string;
+            createdAt?: number;
+            type?: number;
+            deadline?: number;
+            estimatedDate?: number;
+            priority?: string;
+            statusId?: number;
+            sprintId?: number;
+            assigneeId?: number;
+            parentTaskId?: number;
+            createdBy?: number;
+            releaseId?: number;
+            projectId?: number;
+        };
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): Task;
+        serializeBinary(): Uint8Array;
+        static deserializeBinary(bytes: Uint8Array): Task;
     }
     class Packet extends pb_1.Message {
         #private;

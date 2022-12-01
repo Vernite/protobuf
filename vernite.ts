@@ -6,6 +6,73 @@
 import * as dependency_1 from "./google/protobuf/any";
 import * as pb_1 from "google-protobuf";
 export namespace vernite {
+    export class KeepAlive extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            id?: number;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("id" in data && data.id != undefined) {
+                    this.id = data.id;
+                }
+            }
+        }
+        get id() {
+            return pb_1.Message.getFieldWithDefault(this, 1, 0) as number;
+        }
+        set id(value: number) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        static fromObject(data: {
+            id?: number;
+        }): KeepAlive {
+            const message = new KeepAlive({});
+            if (data.id != null) {
+                message.id = data.id;
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                id?: number;
+            } = {};
+            if (this.id != null) {
+                data.id = this.id;
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.id != 0)
+                writer.writeInt64(1, this.id);
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): KeepAlive {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new KeepAlive();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.id = reader.readInt64();
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static override deserializeBinary(bytes: Uint8Array): KeepAlive {
+            return KeepAlive.deserialize(bytes);
+        }
+    }
     export class CommunicatorModel extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {}) {
@@ -441,7 +508,7 @@ export namespace vernite {
                 user?: string;
                 channel?: string;
                 content?: string;
-                timestamp?: string;
+                timestamp?: number;
                 provider?: string;
             }) {
                 super();
@@ -492,9 +559,9 @@ export namespace vernite {
                 pb_1.Message.setField(this, 4, value);
             }
             get timestamp() {
-                return pb_1.Message.getFieldWithDefault(this, 5, "") as string;
+                return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
             }
-            set timestamp(value: string) {
+            set timestamp(value: number) {
                 pb_1.Message.setField(this, 5, value);
             }
             get provider() {
@@ -508,7 +575,7 @@ export namespace vernite {
                 user?: string;
                 channel?: string;
                 content?: string;
-                timestamp?: string;
+                timestamp?: number;
                 provider?: string;
             }): Message {
                 const message = new Message({});
@@ -538,7 +605,7 @@ export namespace vernite {
                     user?: string;
                     channel?: string;
                     content?: string;
-                    timestamp?: string;
+                    timestamp?: number;
                     provider?: string;
                 } = {};
                 if (this.id != null) {
@@ -573,8 +640,8 @@ export namespace vernite {
                     writer.writeString(3, this.channel);
                 if (this.content.length)
                     writer.writeString(4, this.content);
-                if (this.timestamp.length)
-                    writer.writeString(5, this.timestamp);
+                if (this.timestamp != 0)
+                    writer.writeInt64(5, this.timestamp);
                 if (this.provider.length)
                     writer.writeString(6, this.provider);
                 if (!w)
@@ -599,7 +666,7 @@ export namespace vernite {
                             message.content = reader.readString();
                             break;
                         case 5:
-                            message.timestamp = reader.readString();
+                            message.timestamp = reader.readInt64();
                             break;
                         case 6:
                             message.provider = reader.readString();
@@ -615,6 +682,395 @@ export namespace vernite {
             static override deserializeBinary(bytes: Uint8Array): Message {
                 return Message.deserialize(bytes);
             }
+        }
+    }
+    export class Task extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            id?: number;
+            name?: string;
+            description?: string;
+            createdAt?: number;
+            type?: number;
+            deadline?: number;
+            estimatedDate?: number;
+            priority?: string;
+            statusId?: number;
+            sprintId?: number;
+            assigneeId?: number;
+            parentTaskId?: number;
+            createdBy?: number;
+            releaseId?: number;
+            projectId?: number;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("id" in data && data.id != undefined) {
+                    this.id = data.id;
+                }
+                if ("name" in data && data.name != undefined) {
+                    this.name = data.name;
+                }
+                if ("description" in data && data.description != undefined) {
+                    this.description = data.description;
+                }
+                if ("createdAt" in data && data.createdAt != undefined) {
+                    this.createdAt = data.createdAt;
+                }
+                if ("type" in data && data.type != undefined) {
+                    this.type = data.type;
+                }
+                if ("deadline" in data && data.deadline != undefined) {
+                    this.deadline = data.deadline;
+                }
+                if ("estimatedDate" in data && data.estimatedDate != undefined) {
+                    this.estimatedDate = data.estimatedDate;
+                }
+                if ("priority" in data && data.priority != undefined) {
+                    this.priority = data.priority;
+                }
+                if ("statusId" in data && data.statusId != undefined) {
+                    this.statusId = data.statusId;
+                }
+                if ("sprintId" in data && data.sprintId != undefined) {
+                    this.sprintId = data.sprintId;
+                }
+                if ("assigneeId" in data && data.assigneeId != undefined) {
+                    this.assigneeId = data.assigneeId;
+                }
+                if ("parentTaskId" in data && data.parentTaskId != undefined) {
+                    this.parentTaskId = data.parentTaskId;
+                }
+                if ("createdBy" in data && data.createdBy != undefined) {
+                    this.createdBy = data.createdBy;
+                }
+                if ("releaseId" in data && data.releaseId != undefined) {
+                    this.releaseId = data.releaseId;
+                }
+                if ("projectId" in data && data.projectId != undefined) {
+                    this.projectId = data.projectId;
+                }
+            }
+        }
+        get id() {
+            return pb_1.Message.getFieldWithDefault(this, 1, 0) as number;
+        }
+        set id(value: number) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        get name() {
+            return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
+        }
+        set name(value: string) {
+            pb_1.Message.setField(this, 2, value);
+        }
+        get description() {
+            return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
+        }
+        set description(value: string) {
+            pb_1.Message.setField(this, 3, value);
+        }
+        get createdAt() {
+            return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
+        }
+        set createdAt(value: number) {
+            pb_1.Message.setField(this, 4, value);
+        }
+        get type() {
+            return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
+        }
+        set type(value: number) {
+            pb_1.Message.setField(this, 5, value);
+        }
+        get deadline() {
+            return pb_1.Message.getFieldWithDefault(this, 6, 0) as number;
+        }
+        set deadline(value: number) {
+            pb_1.Message.setField(this, 6, value);
+        }
+        get estimatedDate() {
+            return pb_1.Message.getFieldWithDefault(this, 7, 0) as number;
+        }
+        set estimatedDate(value: number) {
+            pb_1.Message.setField(this, 7, value);
+        }
+        get priority() {
+            return pb_1.Message.getFieldWithDefault(this, 8, "") as string;
+        }
+        set priority(value: string) {
+            pb_1.Message.setField(this, 8, value);
+        }
+        get statusId() {
+            return pb_1.Message.getFieldWithDefault(this, 9, 0) as number;
+        }
+        set statusId(value: number) {
+            pb_1.Message.setField(this, 9, value);
+        }
+        get sprintId() {
+            return pb_1.Message.getFieldWithDefault(this, 10, 0) as number;
+        }
+        set sprintId(value: number) {
+            pb_1.Message.setField(this, 10, value);
+        }
+        get assigneeId() {
+            return pb_1.Message.getFieldWithDefault(this, 11, 0) as number;
+        }
+        set assigneeId(value: number) {
+            pb_1.Message.setField(this, 11, value);
+        }
+        get parentTaskId() {
+            return pb_1.Message.getFieldWithDefault(this, 12, 0) as number;
+        }
+        set parentTaskId(value: number) {
+            pb_1.Message.setField(this, 12, value);
+        }
+        get createdBy() {
+            return pb_1.Message.getFieldWithDefault(this, 13, 0) as number;
+        }
+        set createdBy(value: number) {
+            pb_1.Message.setField(this, 13, value);
+        }
+        get releaseId() {
+            return pb_1.Message.getFieldWithDefault(this, 14, 0) as number;
+        }
+        set releaseId(value: number) {
+            pb_1.Message.setField(this, 14, value);
+        }
+        get projectId() {
+            return pb_1.Message.getFieldWithDefault(this, 15, 0) as number;
+        }
+        set projectId(value: number) {
+            pb_1.Message.setField(this, 15, value);
+        }
+        static fromObject(data: {
+            id?: number;
+            name?: string;
+            description?: string;
+            createdAt?: number;
+            type?: number;
+            deadline?: number;
+            estimatedDate?: number;
+            priority?: string;
+            statusId?: number;
+            sprintId?: number;
+            assigneeId?: number;
+            parentTaskId?: number;
+            createdBy?: number;
+            releaseId?: number;
+            projectId?: number;
+        }): Task {
+            const message = new Task({});
+            if (data.id != null) {
+                message.id = data.id;
+            }
+            if (data.name != null) {
+                message.name = data.name;
+            }
+            if (data.description != null) {
+                message.description = data.description;
+            }
+            if (data.createdAt != null) {
+                message.createdAt = data.createdAt;
+            }
+            if (data.type != null) {
+                message.type = data.type;
+            }
+            if (data.deadline != null) {
+                message.deadline = data.deadline;
+            }
+            if (data.estimatedDate != null) {
+                message.estimatedDate = data.estimatedDate;
+            }
+            if (data.priority != null) {
+                message.priority = data.priority;
+            }
+            if (data.statusId != null) {
+                message.statusId = data.statusId;
+            }
+            if (data.sprintId != null) {
+                message.sprintId = data.sprintId;
+            }
+            if (data.assigneeId != null) {
+                message.assigneeId = data.assigneeId;
+            }
+            if (data.parentTaskId != null) {
+                message.parentTaskId = data.parentTaskId;
+            }
+            if (data.createdBy != null) {
+                message.createdBy = data.createdBy;
+            }
+            if (data.releaseId != null) {
+                message.releaseId = data.releaseId;
+            }
+            if (data.projectId != null) {
+                message.projectId = data.projectId;
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                id?: number;
+                name?: string;
+                description?: string;
+                createdAt?: number;
+                type?: number;
+                deadline?: number;
+                estimatedDate?: number;
+                priority?: string;
+                statusId?: number;
+                sprintId?: number;
+                assigneeId?: number;
+                parentTaskId?: number;
+                createdBy?: number;
+                releaseId?: number;
+                projectId?: number;
+            } = {};
+            if (this.id != null) {
+                data.id = this.id;
+            }
+            if (this.name != null) {
+                data.name = this.name;
+            }
+            if (this.description != null) {
+                data.description = this.description;
+            }
+            if (this.createdAt != null) {
+                data.createdAt = this.createdAt;
+            }
+            if (this.type != null) {
+                data.type = this.type;
+            }
+            if (this.deadline != null) {
+                data.deadline = this.deadline;
+            }
+            if (this.estimatedDate != null) {
+                data.estimatedDate = this.estimatedDate;
+            }
+            if (this.priority != null) {
+                data.priority = this.priority;
+            }
+            if (this.statusId != null) {
+                data.statusId = this.statusId;
+            }
+            if (this.sprintId != null) {
+                data.sprintId = this.sprintId;
+            }
+            if (this.assigneeId != null) {
+                data.assigneeId = this.assigneeId;
+            }
+            if (this.parentTaskId != null) {
+                data.parentTaskId = this.parentTaskId;
+            }
+            if (this.createdBy != null) {
+                data.createdBy = this.createdBy;
+            }
+            if (this.releaseId != null) {
+                data.releaseId = this.releaseId;
+            }
+            if (this.projectId != null) {
+                data.projectId = this.projectId;
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.id != 0)
+                writer.writeInt64(1, this.id);
+            if (this.name.length)
+                writer.writeString(2, this.name);
+            if (this.description.length)
+                writer.writeString(3, this.description);
+            if (this.createdAt != 0)
+                writer.writeInt64(4, this.createdAt);
+            if (this.type != 0)
+                writer.writeInt32(5, this.type);
+            if (this.deadline != 0)
+                writer.writeInt64(6, this.deadline);
+            if (this.estimatedDate != 0)
+                writer.writeInt64(7, this.estimatedDate);
+            if (this.priority.length)
+                writer.writeString(8, this.priority);
+            if (this.statusId != 0)
+                writer.writeInt64(9, this.statusId);
+            if (this.sprintId != 0)
+                writer.writeInt64(10, this.sprintId);
+            if (this.assigneeId != 0)
+                writer.writeInt64(11, this.assigneeId);
+            if (this.parentTaskId != 0)
+                writer.writeInt64(12, this.parentTaskId);
+            if (this.createdBy != 0)
+                writer.writeInt64(13, this.createdBy);
+            if (this.releaseId != 0)
+                writer.writeInt64(14, this.releaseId);
+            if (this.projectId != 0)
+                writer.writeInt64(15, this.projectId);
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): Task {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new Task();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.id = reader.readInt64();
+                        break;
+                    case 2:
+                        message.name = reader.readString();
+                        break;
+                    case 3:
+                        message.description = reader.readString();
+                        break;
+                    case 4:
+                        message.createdAt = reader.readInt64();
+                        break;
+                    case 5:
+                        message.type = reader.readInt32();
+                        break;
+                    case 6:
+                        message.deadline = reader.readInt64();
+                        break;
+                    case 7:
+                        message.estimatedDate = reader.readInt64();
+                        break;
+                    case 8:
+                        message.priority = reader.readString();
+                        break;
+                    case 9:
+                        message.statusId = reader.readInt64();
+                        break;
+                    case 10:
+                        message.sprintId = reader.readInt64();
+                        break;
+                    case 11:
+                        message.assigneeId = reader.readInt64();
+                        break;
+                    case 12:
+                        message.parentTaskId = reader.readInt64();
+                        break;
+                    case 13:
+                        message.createdBy = reader.readInt64();
+                        break;
+                    case 14:
+                        message.releaseId = reader.readInt64();
+                        break;
+                    case 15:
+                        message.projectId = reader.readInt64();
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static override deserializeBinary(bytes: Uint8Array): Task {
+            return Task.deserialize(bytes);
         }
     }
     export class Packet extends pb_1.Message {
