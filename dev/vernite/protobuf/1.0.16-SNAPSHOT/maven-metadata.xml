@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>dev.vernite</groupId>
+  <artifactId>protobuf</artifactId>
+  <versioning>
+    <lastUpdated>20221201150228</lastUpdated>
+    <snapshot>
+      <timestamp>20221201.150228</timestamp>
+      <buildNumber>1</buildNumber>
+    </snapshot>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>jar</extension>
+        <value>1.0.16-20221201.150228-1</value>
+        <updated>20221201150228</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>1.0.16-20221201.150228-1</value>
+        <updated>20221201150228</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+  <version>1.0.16-SNAPSHOT</version>
+</metadata>
