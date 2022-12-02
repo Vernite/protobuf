@@ -694,6 +694,7 @@ export namespace vernite {
                 channel?: string;
                 content?: string;
                 provider?: string;
+                integrationID?: number;
             }) {
                 super();
                 pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
@@ -706,6 +707,9 @@ export namespace vernite {
                     }
                     if ("provider" in data && data.provider != undefined) {
                         this.provider = data.provider;
+                    }
+                    if ("integrationID" in data && data.integrationID != undefined) {
+                        this.integrationID = data.integrationID;
                     }
                 }
             }
@@ -727,10 +731,17 @@ export namespace vernite {
             set provider(value: string) {
                 pb_1.Message.setField(this, 3, value);
             }
+            get integrationID() {
+                return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
+            }
+            set integrationID(value: number) {
+                pb_1.Message.setField(this, 4, value);
+            }
             static fromObject(data: {
                 channel?: string;
                 content?: string;
                 provider?: string;
+                integrationID?: number;
             }): SendMessage {
                 const message = new SendMessage({});
                 if (data.channel != null) {
@@ -742,6 +753,9 @@ export namespace vernite {
                 if (data.provider != null) {
                     message.provider = data.provider;
                 }
+                if (data.integrationID != null) {
+                    message.integrationID = data.integrationID;
+                }
                 return message;
             }
             toObject() {
@@ -749,6 +763,7 @@ export namespace vernite {
                     channel?: string;
                     content?: string;
                     provider?: string;
+                    integrationID?: number;
                 } = {};
                 if (this.channel != null) {
                     data.channel = this.channel;
@@ -758,6 +773,9 @@ export namespace vernite {
                 }
                 if (this.provider != null) {
                     data.provider = this.provider;
+                }
+                if (this.integrationID != null) {
+                    data.integrationID = this.integrationID;
                 }
                 return data;
             }
@@ -771,6 +789,8 @@ export namespace vernite {
                     writer.writeString(2, this.content);
                 if (this.provider.length)
                     writer.writeString(3, this.provider);
+                if (this.integrationID != 0)
+                    writer.writeInt64(4, this.integrationID);
                 if (!w)
                     return writer.getResultBuffer();
             }
@@ -788,6 +808,9 @@ export namespace vernite {
                             break;
                         case 3:
                             message.provider = reader.readString();
+                            break;
+                        case 4:
+                            message.integrationID = reader.readInt64();
                             break;
                         default: reader.skipField();
                     }

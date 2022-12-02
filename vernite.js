@@ -634,6 +634,9 @@ export var vernite;
                     if ("provider" in data && data.provider != undefined) {
                         this.provider = data.provider;
                     }
+                    if ("integrationID" in data && data.integrationID != undefined) {
+                        this.integrationID = data.integrationID;
+                    }
                 }
             }
             get channel() {
@@ -654,6 +657,12 @@ export var vernite;
             set provider(value) {
                 pb_1.Message.setField(this, 3, value);
             }
+            get integrationID() {
+                return pb_1.Message.getFieldWithDefault(this, 4, 0);
+            }
+            set integrationID(value) {
+                pb_1.Message.setField(this, 4, value);
+            }
             static fromObject(data) {
                 const message = new SendMessage({});
                 if (data.channel != null) {
@@ -664,6 +673,9 @@ export var vernite;
                 }
                 if (data.provider != null) {
                     message.provider = data.provider;
+                }
+                if (data.integrationID != null) {
+                    message.integrationID = data.integrationID;
                 }
                 return message;
             }
@@ -678,6 +690,9 @@ export var vernite;
                 if (this.provider != null) {
                     data.provider = this.provider;
                 }
+                if (this.integrationID != null) {
+                    data.integrationID = this.integrationID;
+                }
                 return data;
             }
             serialize(w) {
@@ -688,6 +703,8 @@ export var vernite;
                     writer.writeString(2, this.content);
                 if (this.provider.length)
                     writer.writeString(3, this.provider);
+                if (this.integrationID != 0)
+                    writer.writeInt64(4, this.integrationID);
                 if (!w)
                     return writer.getResultBuffer();
             }
@@ -705,6 +722,9 @@ export var vernite;
                             break;
                         case 3:
                             message.provider = reader.readString();
+                            break;
+                        case 4:
+                            message.integrationID = reader.readInt64();
                             break;
                         default: reader.skipField();
                     }

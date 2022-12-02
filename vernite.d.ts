@@ -179,6 +179,7 @@ export declare namespace vernite {
                 channel?: string;
                 content?: string;
                 provider?: string;
+                integrationID?: number;
             });
             get channel(): string;
             set channel(value: string);
@@ -186,15 +187,19 @@ export declare namespace vernite {
             set content(value: string);
             get provider(): string;
             set provider(value: string);
+            get integrationID(): number;
+            set integrationID(value: number);
             static fromObject(data: {
                 channel?: string;
                 content?: string;
                 provider?: string;
+                integrationID?: number;
             }): SendMessage;
             toObject(): {
                 channel?: string;
                 content?: string;
                 provider?: string;
+                integrationID?: number;
             };
             serialize(): Uint8Array;
             serialize(w: pb_1.BinaryWriter): void;
