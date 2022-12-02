@@ -688,6 +688,119 @@ export namespace vernite {
                 return Message.deserialize(bytes);
             }
         }
+        export class SendMessage extends pb_1.Message {
+            #one_of_decls: number[][] = [];
+            constructor(data?: any[] | {
+                channel?: string;
+                content?: string;
+                provider?: string;
+            }) {
+                super();
+                pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+                if (!Array.isArray(data) && typeof data == "object") {
+                    if ("channel" in data && data.channel != undefined) {
+                        this.channel = data.channel;
+                    }
+                    if ("content" in data && data.content != undefined) {
+                        this.content = data.content;
+                    }
+                    if ("provider" in data && data.provider != undefined) {
+                        this.provider = data.provider;
+                    }
+                }
+            }
+            get channel() {
+                return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
+            }
+            set channel(value: string) {
+                pb_1.Message.setField(this, 1, value);
+            }
+            get content() {
+                return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
+            }
+            set content(value: string) {
+                pb_1.Message.setField(this, 2, value);
+            }
+            get provider() {
+                return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
+            }
+            set provider(value: string) {
+                pb_1.Message.setField(this, 3, value);
+            }
+            static fromObject(data: {
+                channel?: string;
+                content?: string;
+                provider?: string;
+            }): SendMessage {
+                const message = new SendMessage({});
+                if (data.channel != null) {
+                    message.channel = data.channel;
+                }
+                if (data.content != null) {
+                    message.content = data.content;
+                }
+                if (data.provider != null) {
+                    message.provider = data.provider;
+                }
+                return message;
+            }
+            toObject() {
+                const data: {
+                    channel?: string;
+                    content?: string;
+                    provider?: string;
+                } = {};
+                if (this.channel != null) {
+                    data.channel = this.channel;
+                }
+                if (this.content != null) {
+                    data.content = this.content;
+                }
+                if (this.provider != null) {
+                    data.provider = this.provider;
+                }
+                return data;
+            }
+            serialize(): Uint8Array;
+            serialize(w: pb_1.BinaryWriter): void;
+            serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+                const writer = w || new pb_1.BinaryWriter();
+                if (this.channel.length)
+                    writer.writeString(1, this.channel);
+                if (this.content.length)
+                    writer.writeString(2, this.content);
+                if (this.provider.length)
+                    writer.writeString(3, this.provider);
+                if (!w)
+                    return writer.getResultBuffer();
+            }
+            static deserialize(bytes: Uint8Array | pb_1.BinaryReader): SendMessage {
+                const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new SendMessage();
+                while (reader.nextField()) {
+                    if (reader.isEndGroup())
+                        break;
+                    switch (reader.getFieldNumber()) {
+                        case 1:
+                            message.channel = reader.readString();
+                            break;
+                        case 2:
+                            message.content = reader.readString();
+                            break;
+                        case 3:
+                            message.provider = reader.readString();
+                            break;
+                        default: reader.skipField();
+                    }
+                }
+                return message;
+            }
+            serializeBinary(): Uint8Array {
+                return this.serialize();
+            }
+            static override deserializeBinary(bytes: Uint8Array): SendMessage {
+                return SendMessage.deserialize(bytes);
+            }
+        }
     }
     export class Task extends pb_1.Message {
         #one_of_decls: number[][] = [];
@@ -961,76 +1074,6 @@ export namespace vernite {
         }
         static override deserializeBinary(bytes: Uint8Array): Task {
             return Task.deserialize(bytes);
-        }
-    }
-    export class Packet extends pb_1.Message {
-        #one_of_decls: number[][] = [];
-        constructor(data?: any[] | {
-            payload?: dependency_1.google.protobuf.Any;
-        }) {
-            super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
-            if (!Array.isArray(data) && typeof data == "object") {
-                if ("payload" in data && data.payload != undefined) {
-                    this.payload = data.payload;
-                }
-            }
-        }
-        get payload() {
-            return pb_1.Message.getWrapperField(this, dependency_1.google.protobuf.Any, 1) as dependency_1.google.protobuf.Any;
-        }
-        set payload(value: dependency_1.google.protobuf.Any) {
-            pb_1.Message.setWrapperField(this, 1, value);
-        }
-        get has_payload() {
-            return pb_1.Message.getField(this, 1) != null;
-        }
-        static fromObject(data: {
-            payload?: ReturnType<typeof dependency_1.google.protobuf.Any.prototype.toObject>;
-        }): Packet {
-            const message = new Packet({});
-            if (data.payload != null) {
-                message.payload = dependency_1.google.protobuf.Any.fromObject(data.payload);
-            }
-            return message;
-        }
-        toObject() {
-            const data: {
-                payload?: ReturnType<typeof dependency_1.google.protobuf.Any.prototype.toObject>;
-            } = {};
-            if (this.payload != null) {
-                data.payload = this.payload.toObject();
-            }
-            return data;
-        }
-        serialize(): Uint8Array;
-        serialize(w: pb_1.BinaryWriter): void;
-        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
-            const writer = w || new pb_1.BinaryWriter();
-            if (this.has_payload)
-                writer.writeMessage(1, this.payload, () => this.payload.serialize(writer));
-            if (!w)
-                return writer.getResultBuffer();
-        }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): Packet {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new Packet();
-            while (reader.nextField()) {
-                if (reader.isEndGroup())
-                    break;
-                switch (reader.getFieldNumber()) {
-                    case 1:
-                        reader.readMessage(message.payload, () => message.payload = dependency_1.google.protobuf.Any.deserialize(reader));
-                        break;
-                    default: reader.skipField();
-                }
-            }
-            return message;
-        }
-        serializeBinary(): Uint8Array {
-            return this.serialize();
-        }
-        static override deserializeBinary(bytes: Uint8Array): Packet {
-            return Packet.deserialize(bytes);
         }
     }
 }
